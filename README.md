@@ -2,4 +2,4 @@
 
 A silly esoteric programming language
 
-Latest Version: none :<
+Latest Version: 0.1.0
