@@ -36,49 +36,30 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var readline = require("readline");
-var fs = require("fs");
+var input = require("./input");
 var parser = require("./parser");
-var interpreter = require("./interpreter");
-// Create an interface for reading input
-var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-// Function to collect user input
-function ask(question) {
-    return new Promise(function (resolve) {
-        rl.question(question, function (answer) {
-            resolve(answer);
-        });
-    });
-}
-function readfile(name, encoding) {
-    if (encoding === void 0) { encoding = 'utf8'; }
-    try {
-        return fs.readFileSync(name, encoding);
-    }
-    catch (err) {
-        console.error("Error reading the file: ", err);
-        return '';
-    }
-}
+var interpreter_1 = require("./interpreter");
 // Main function to run the program
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var filename, data, tokens, program;
+        var filename, data, tokens, program, int;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, ask('File name/path: ')];
+                case 0: return [4 /*yield*/, input.ask('File name/path: ')];
                 case 1:
                     filename = _a.sent();
-                    rl.close(); // Close the readline interface
-                    data = readfile(filename);
-                    console.log("Contents of the file: \n" + data);
-                    console.log("-------------");
+                    data = input.readfile(filename);
                     tokens = parser.tokenize(data);
                     program = parser.parse(tokens);
-                    interpreter.logcode(program);
+                    int = new interpreter_1.Interpreter();
+                    // int.logcode(program);
+                    // console.log("-------------")
+                    return [4 /*yield*/, int.execute(program)];
+                case 2:
+                    // int.logcode(program);
+                    // console.log("-------------")
+                    _a.sent();
+                    input.rl.close(); // Close the readline interface
                     return [2 /*return*/];
             }
         });

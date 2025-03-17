@@ -2,6 +2,7 @@ main.js
 parser.js
 classes.js
 interpreter.js
+input.js
 
 text.txt
 pmake.py

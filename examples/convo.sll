@@ -1,0 +1,19 @@
+>w< Declare a variable 'name'
+:3 name ~
+
+>w< Ask for input and store it inside 'name'
+owo name "What's your name?
+    " ~
+
+>w< Print name
+uwu "Hello, " name "!" ~
+
+>w< Declare a variable 'mood'
+:3 mood ~
+
+>w< Ask for input and store it inside 'mood'
+owo mood "How are you?
+    " ~
+
+>w< Throw a runtime error
+xwx "This program has no social skills" ~

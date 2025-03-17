@@ -1,6 +1,7 @@
 export enum TokenTypes {
     ANY,
-    STR
+    STR,
+    INT
 }
 
 // for lexing and tokenization
@@ -22,16 +23,16 @@ export class Token {
 // product of parser
 // interpreted bt the interpreter module
 export class Command {
-    public name: Token;
+    public name: string;
     public args: Token[];
 
     constructor (name: string, args: Token[] = []) {
-        this.name = new Token(name);
+        this.name = name;
         this.args = args
     }
 
     log(): void {
-        console.log(`${this.name.value}: `);
+        console.log(`${this.name}: `);
         for (let tk of this.args) {
             tk.log('    ');
         }

@@ -1,48 +1,29 @@
-import * as readline from 'readline';
-import * as fs from 'fs';
+import * as input from './input'
 import * as parser from './parser';
-import * as interpreter from './interpreter'
+import {Interpreter} from './interpreter'
 import {Token, Command} from './classes'
-
-// Create an interface for reading input
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-// Function to collect user input
-function ask(question: string): Promise<string> {
-    return new Promise((resolve) => {
-        rl.question(question, (answer) => {
-            resolve(answer);
-        });
-    });
-}
-
-function readfile(name: string, encoding: any = 'utf8'): string {
-    try {
-        return fs.readFileSync(name, encoding) as unknown as string;
-    } catch (err) {
-        console.error("Error reading the file: ", err);
-        return '';
-    }
-}
 
 // Main function to run the program
 async function main() {
 
-    const filename = await ask('File name/path: ');
-    rl.close(); // Close the readline interface
+    const filename = await input.ask('File name/path: ');
 
-    const data = readfile(filename);
-    console.log("Contents of the file: \n" + data)
+    const data = input.readfile(filename);
 
-    console.log("-------------")
+    // console.log("Contents of the file: \n" + data)
+    // console.log("-------------")
 
     const tokens: Token[] = parser.tokenize(data);
     const program: Command[] = parser.parse(tokens);
-    interpreter.logcode(program);
-    
+  
+    const int = new Interpreter();
+
+    // int.logcode(program);
+    // console.log("-------------")
+
+    await int.execute(program);
+
+    input.rl.close(); // Close the readline interface
 }
 
 // Run the main function
