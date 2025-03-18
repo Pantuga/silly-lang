@@ -1,8 +1,8 @@
 main.js
-parser.js
-classes.js
-interpreter.js
-input.js
+parser.mjs
+classes.mjs
+interpreter.mjs
+input.mjs
 
 text.txt
 pmake.py
