@@ -1,7 +1,7 @@
-import * as input from './input'
-import * as parser from './parser';
-import {Interpreter} from './interpreter'
-import {Token, Command} from './classes'
+import * as input from './input.mjs'
+import * as parser from './parser.mjs';
+import {Interpreter} from './interpreter.mjs'
+import {Token, Command} from './classes.mjs'
 
 // Main function to run the program
 async function main() {

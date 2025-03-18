@@ -1,6 +1,6 @@
-import * as input from './input'
-import {Token, Command, TokenTypes} from './classes'
-import {strToNum} from './parser';
+import * as input from './input.mjs'
+import {Token, Command, TokenTypes} from './classes.mjs'
+import {strToNum} from './parser.mjs';
 
 // sorry for long file, most of it is the execute method in the interpreter
 

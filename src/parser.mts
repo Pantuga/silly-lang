@@ -1,4 +1,4 @@
-import {Command, Token, TokenTypes} from './classes'
+import {Command, Token, TokenTypes} from './classes.mjs'
 
 export const NUM_PREFIX = '#'
 export const QUOTE = '"'
